@@ -6,27 +6,28 @@ Platform
 ###### Backend
 * Node.js
 * Express.js
-* CoffeeScript
-* Parse OR MongoDB/MySQL/something else?
+* Socket.io
+* MongoDB/MySQL/something else?
+* Ve (liguistics parser)
 
 ###### Frontend
 * HTML5
-* JavaScript/CoffeeScript
+* JavaScript
 * Socket.io
 
-Resources
----------
-##### [NodeSchool](http://nodeschool.io) 
-Good resource on learning the basics of Node.js. Very abstract however. You can probably learn all you need to know about Node from checking out existing web projects.
+VeServerTest
+------------
+Set up a Ve test server to mess around with to figure out how to work with it in
+our app.
 
-##### [CoffeeScript](http://coffeescript.org) 
-JavaScript made beautiful
-
-##### [Express.js](http://expressjs.com/)
-Web-framework for Node. 
-
-##### [Socket.io](http://socket.io/)
-For building real-time, event-based web applications
+###### Install/Setup
+1. Have [Ruby](http://ruby-lang.org) installed
+2. Install [MeCab](http://mecab.googlecode.com/svn/trunk/mecab/doc/index.html).
+On OSX, `brew install mecab-ipadic`
+3. `gem install bundle` (if you don't already use Ruby)
+4. `bundle update`
+5. From `yomi/VeServerTest/` directory, `ruby ve/sinatra/server.rb`
+6. `node nodetest.js`
 
 
 Developers
