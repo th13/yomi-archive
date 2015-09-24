@@ -15,10 +15,9 @@ Platform
 * JavaScript
 * Socket.io
 
-VeServerTest
+Ve Sinatra Server
 ------------
-Set up a Ve test server to mess around with to figure out how to work with it in
-our app.
+Need to run this server for `jisho-search.js` to work.
 
 ###### Install/Setup
 1. Have [Ruby](http://ruby-lang.org) installed
@@ -26,8 +25,7 @@ our app.
 On OSX, `brew install mecab-ipadic`
 3. `gem install bundle` (if you don't already use Ruby)
 4. `bundle update`
-5. From `yomi/VeServerTest/` directory, `ruby ve/sinatra/server.rb`
-6. `node nodetest.js`
+5. From `yomi/ve/` directory, `ruby sinatra/server.rb`
 
 
 Developers
