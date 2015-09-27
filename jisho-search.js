@@ -15,7 +15,7 @@ var http = require('http')
 var jpc = require('jp-conversion')
 var Ve = require('./ve')
 
-Ve.words('昨日すき焼きを食べました', function(words) {
+Ve.words('チーズ', function(words) {
 	words = JSON.parse(words)
 
 	var romaji = []
