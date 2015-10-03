@@ -1,0 +1,7 @@
+h1 Japanese Text Parsing Example
+h3
+  - @words.each do |word|
+    - if word.part_of_speech != Ve::PartOfSpeech::Symbol && word.part_of_speech != Ve::PartOfSpeech::Number
+      a.jp class="jp-#{partOfSpeechClass(word.part_of_speech.name)}" href="#" = word.word
+    - else
+      span.jp = word.word

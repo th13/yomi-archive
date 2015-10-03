@@ -3,7 +3,6 @@ require 'json'
 require 've'
 require "mojinizer"
 
-def
 words = Ve.in(:ja).words('田中先生がどこに住んでいるか知っていますか。')
 
 words.collect! do |word|
