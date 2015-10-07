@@ -31,7 +31,7 @@ gem 'autoprefixer-rails'
 # Convert between Japanese kana and romaji
 gem 'mojinizer'
 # Japanese language parsing
-gem 've', '0.0.3', :path => 'vendor/ve/'
+gem 've', '0.0.3', :path => 'vendor/'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
