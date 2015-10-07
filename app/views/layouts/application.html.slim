@@ -5,7 +5,7 @@ html
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="view-port" content="width=device-width, initial-scale=1"
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
     /! Fixed navbar
@@ -46,4 +46,4 @@ html
       .container
         p.text-muted Copyright &copy; 2015 Gold Team
 
-    = javascript_include_tag 'application', 'data-turbolinks-track': true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
