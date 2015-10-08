@@ -7,7 +7,7 @@ Setup Instructions
 2. Clone this repo.
 3. Install [MeCab](http://taku910.github.io/mecab/).
 4. Create a `secrets.yml` file. See [Section 2.2](http://guides.rubyonrails.org/4_1_release_notes.html) here for more info.
-5. Migrate the db. `bin/rake db:migrate RAILS_ENV=development`
+5. Load the db schema. `bin/rake db:schema:load`
 6. `bin/rails server`
 
 Developers
