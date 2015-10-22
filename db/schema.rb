@@ -11,14 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003035258) do
+ActiveRecord::Schema.define(version: 20151022204749) do
 
-  create_table "articles", force: :cascade do |t|
+  create_table "keywords", force: :cascade do |t|
+    t.string   "word"
+    t.integer  "sentence_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "keywords", ["sentence_id"], name: "index_keywords_on_sentence_id"
+
+  create_table "sentences", force: :cascade do |t|
     t.string   "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "articles", ["id"], name: "index_articles_on_id", unique: true
+  add_index "sentences", ["id"], name: "index_sentences_on_id", unique: true
 
 end
