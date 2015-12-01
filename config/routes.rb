@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  root 'main#home'
+
+  get 'vocab'   => 'main#vocab'
+  get 'read'    => 'main#read'
+  get 'analyze' => 'main#analyze'
+
+  resources :users
+  resources :sentences,   only: [:create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
