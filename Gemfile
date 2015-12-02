@@ -29,6 +29,9 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
+# For simple Register forms
+gem 'simple_form'
+
 # Convert between Japanese kana and romaji
 gem 'mojinizer'
 # Japanese language parsing
