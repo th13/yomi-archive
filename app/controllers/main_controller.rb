@@ -10,4 +10,7 @@ class MainController < ApplicationController
 
   def analyze
   end
+
+  def new
+  end
 end

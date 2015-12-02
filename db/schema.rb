@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151201092831) do
 
-
   create_table "keywords", force: :cascade do |t|
     t.integer  "sentence_id"
     t.integer  "word_id"
@@ -37,12 +36,11 @@ ActiveRecord::Schema.define(version: 20151201092831) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "e_password"
+    t.string   "salt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
   create_table "vocabs", force: :cascade do |t|
     t.integer  "user_id"
@@ -61,14 +59,5 @@ ActiveRecord::Schema.define(version: 20151201092831) do
   end
 
   add_index "words", ["jpn"], name: "index_words_on_jpn", unique: true
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "e_password"
-    t.string   "salt"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end

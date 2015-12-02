@@ -1,42 +1,48 @@
 class User < ActiveRecord::Base
-	has_many :sentences, dependent: :destroy
-	has_many :vocabs, dependent: :destroy
-	has_many :words, :through => :vocabs
-	attr_accessor :password
-	attr_accessible :name, :email, :password, :password_confirmation
 
-	email_regex = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  has_many :sentences, dependent: :destroy
+  has_many :vocabs, dependent: :destroy
+  has_many :words, :through => :vocabs
 
-	validates :name, :presence   => true,
-			  :length		     => { :maximum => 50 } 
-	validates :email, :presence  => true,
-			  :format 			 => { :with => email_regex },
-			  :uniqueness 		 => { :case_sensitive => false }
+  attr_accessor :password
 
-	validates :password, :presence => true,
-			  :confirmation => true
+  email_regex = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-	before_save :encrypt_password
+  validates :name, :presence   => true,
+    :length		     => { :maximum => 50 }
 
-	def has_password?(submitted_password)
-		self.encrypted_password = encrypt(submitted_password)
-	end
+  validates :email, :presence  => true,
+    :format 			 => { :with => email_regex },
+    :uniqueness 		 => { :case_sensitive => false }
 
-	def self.authenticate(email, submitted_password)
-		user = find_by_email(email)
+  validates :password, :presence => true,
+    :confirmation => true
 
-		return nil if user.nil?
-		return user if user.has_password(submitted_password)
-	end
+  before_save :encrypt_password
 
-	private 
-		def encrypt_password
-			self.salt = Digest::SHA2.hexdigest("#{Time.now.utc}--#{password}") if self.new_record?
-			self.encrypted_password = encrypt(pawwrod)
-		end
+  def has_password?(submitted_password)
+    self.encrypted_password = encrypt(submitted_password)
+  end
 
-		def encrypt(pass)
-			Digest::SHA2.hexdigest("#{self.salt}--#{pass}")
-		end
+  def self.authenticate(email, submitted_password)
+    user = find_by_email(email)
+
+    return nil if user.nil?
+    return user if user.has_password(submitted_password)
+  end
+
+  private
+  def encrypt_password
+    self.salt = Digest::SHA2.hexdigest("#{Time.now.utc}--#{password}") if self.new_record?
+    self.e_password = encrypt(password)
+  end
+
+  def encrypt(pass)
+    Digest::SHA2.hexdigest("#{self.salt}--#{pass}")
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 
 end
