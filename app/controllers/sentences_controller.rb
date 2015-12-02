@@ -1,9 +1,7 @@
 class SentencesController < ApplicationController
-  def index
+  def create
   end
 
-  def show
-    sentence = Sentence.find(params[:id])
-    @words = Ve.in(:ja).words(sentence.text)
+  def destroy
   end
 end
