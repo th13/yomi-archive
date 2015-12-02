@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022204749) do
+ActiveRecord::Schema.define(version: 20151128214955) do
 
   create_table "keywords", force: :cascade do |t|
     t.string   "word"
@@ -29,5 +29,14 @@ ActiveRecord::Schema.define(version: 20151022204749) do
   end
 
   add_index "sentences", ["id"], name: "index_sentences_on_id", unique: true
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "e_password"
+    t.string   "salt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
