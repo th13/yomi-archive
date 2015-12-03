@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20151203033336) do
     t.string   "password_digest"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+
   create_table "vocabs", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "word_id"

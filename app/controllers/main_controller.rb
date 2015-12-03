@@ -10,7 +10,10 @@ class MainController < ApplicationController
 
   def analyze
   end
+<<<<<<< HEAD
 
   def new
   end
+=======
+>>>>>>> origin/elliot/backend
 end
