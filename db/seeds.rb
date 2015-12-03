@@ -7,8 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # number of sentences in examples.utf
+#require_relative '../lib/parser.rb'
+
 EXAMPLE_SENTENCES = 149865
-SKIP_FACTOR = 100
+SKIP_FACTOR = 1000
 count = 0
 sentences = 0
 
@@ -20,12 +22,16 @@ file = "examples.utf"
 examples = File.open(file, "r")
 while !examples.eof?
   line = examples.readline
+  # if line contains info we want to parse
   if line.match("A: ")
     if (count % SKIP_FACTOR == 0)
       jpn = line[3..line.index("\t")-1]
       eng = line[(line.index("\t")+1)..line.index("#ID")-1]
-      #puts jpn + "\n" + eng + "\n"
-      Sentence.create!(jpn: jpn, eng: eng, user: user)
+      # puts jpn + "\n" + eng + "\n" and assigns sentence to variable
+      sentence = Sentence.create!(jpn: jpn, eng: eng, user: user)
+      # parses sentence with ve
+      Parser.parse_sentence(sentence)
+
       sentences = sentences + 1
       if (count % 1000 == 0)
         puts "#{count*100 / EXAMPLE_SENTENCES}% of examples loaded"
