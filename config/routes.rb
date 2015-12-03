@@ -1,19 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
-
   root 'main#home'
 
   get 'vocab'     => 'main#vocab'
   get 'read'      => 'main#read'
   get 'analyze'   => 'main#analyze'
-  
-  get 'new'       => 'users#new'
-  get "users/:id" => "users#show"
-  get "edit/:id"  => "users#edit"
 
-  get "users/:id" => "users#show"
-  get "edit/:id"  => "users#edit"
+  get 'new'             => 'users#new'
+  get 'users/:id'      => 'users#show'
 
   get    'login'         => 'sessions#new'
   post   'login'         => 'sessions#create'

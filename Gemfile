@@ -37,6 +37,8 @@ gem 'mojinizer'
 # Japanese language parsing
 gem 've', '0.0.3'
 
+gem 'bcrypt',               '3.1.7'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
