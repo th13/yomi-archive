@@ -29,10 +29,15 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
+# For simple Register forms
+gem 'simple_form'
+
 # Convert between Japanese kana and romaji
 gem 'mojinizer'
 # Japanese language parsing
 gem 've', '0.0.3'
+
+gem 'bcrypt',               '3.1.7'
 
 
 # Use ActiveModel has_secure_password

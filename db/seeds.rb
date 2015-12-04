@@ -6,16 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# number of sentences in examples.utf
 #require_relative '../lib/parser.rb'
 
 EXAMPLE_SENTENCES = 149865
 SKIP_FACTOR = 10000
+
 count = 0
 sentences = 0
 
 user = User.create!(name: "admin",
-             email: "test@example.com")
+                    email: "test@example.com")
 
 #test User
 user2 = User.create!(name: "test", email: "testemail")
@@ -25,7 +25,7 @@ file = "examples.utf"
 examples = File.open(file, "r")
 while !examples.eof?
   line = examples.readline
-  # if line contains info we want to parse
+  # if line contains info we wnt to parse
   if line.match("A: ")
     #used to skip items in examples
     if (count % SKIP_FACTOR == 0)

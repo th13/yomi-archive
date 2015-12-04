@@ -2,12 +2,21 @@ Rails.application.routes.draw do
 
   root 'main#home'
 
-  get 'vocab'   => 'main#vocab'
-  get 'read'    => 'main#read'
-  get 'analyze' => 'main#analyze'
+  get 'vocab'     => 'main#vocab'
+  get 'read'      => 'main#read'
+  get 'analyze'   => 'main#analyze'
+  get 'analyze/:id' => 'main#analyze_search'
   post 'search' => 'main#search'
 
-  resources :users
+  get 'new'             => 'users#new'
+  get 'users/:id'      => 'users#show'
+
+  get    'login'         => 'sessions#new'
+  post   'login'         => 'sessions#create'
+  delete 'logout'        => 'sessions#destroy'
+
+  post 'users/new'    => 'users#new'
+  #resources :users
   resources :sentences,   only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

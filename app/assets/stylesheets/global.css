@@ -1,0 +1,48 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 100;
+	font-size: 14px;
+	background-color: #fff;
+}
+
+.jp {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+a.hover-jp:hover {
+	text-decoration: none;
+}
+
+a.hover-jp:active {
+	text-decoration: none;
+}
+
+a.hover-jp:visited {
+	text-decoration: none;
+}
+
+.hover-jp span:after {
+	position: relative;
+	content: attr(data-en);
+}
+
+.hover-jp:hover span:after {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	content: attr(data-jp);
+}
+
+.hover-en span:after {
+	position: relative;
+	content: attr(data-jp);
+}
+
+.hover-en:hover span:after {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	content: attr(data-en);
+}
+
+.navbar-nav li > a:active {
+	text-decoration: none;
+	border: none;
+}
