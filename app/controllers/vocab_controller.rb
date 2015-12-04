@@ -3,8 +3,9 @@ class VocabController < ApplicationController
     if logged_in?
       working = false
       words = params[:words].split() || [param[:word]]
-      words.each do |word|
-        @vocab = Vocab.new(user_id: current_user.id, word: word)
+      newWords = Ve.in(:ja).words(words.join(''))
+      newWords.each do |word|
+        @vocab = Vocab.new(user_id: current_user.id, word: word.lemma)
         if @vocab.save
           working = true
         else

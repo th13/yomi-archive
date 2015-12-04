@@ -4,7 +4,11 @@
 }
 
 .jp {
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.jp-small {
+  font-size: 16px;
 }
 
 a.jp {

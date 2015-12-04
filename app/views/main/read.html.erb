@@ -1,6 +1,23 @@
-<div class="page-header">
-  <h1 class="hover-jp"><span data-en="Text Analyzer" data-jp="テキスト解析"></span></h1>
+<div class="row">
+  <div class="page-header">
+    <div class="col-md-6">
+      <h1 class="hover-jp"><span data-en="Text Analyzer" data-jp="テキスト解析"></span></h1>
+      <form method="post" action="/vocab/add">
+        <textarea id="vocabForm" name="words" style="display: none;"></textarea>
+    </div>
+  </div>
+    <div class="col-md-6 text-right">
+      <button type="button" class="btn btn-default hover-jp" id="clearVocab">
+        <span data-en="Clear" data-jp="消す"></span>
+      </button>
+      <button type="submit" class="btn btn-primary hover-jp" style="vertical-align: bottom">
+        <span data-en="Add Words" data-jp="単語を加える"></span>
+      </button>
+    </div>
+    </form>
 </div>
+
+<br>
 <div class="panel panel-default">
   <div class="panel-heading">
     <div id="analyzer-functions" class="hover-jp">
@@ -19,6 +36,7 @@
       <% end %>
     <% end %>
     <br/><br/>
+    Vocabulary to Add: <p id="vocabToAdd"></p>
     <p class="text-muted text-center"><a data-toggle="collapse" aria-expanded="false" aria-controls="view-en" href="#view-en" class="hover-jp"><span data-en="View English" data-jp="英語の翻訳を見る"></span><span class="caret"></span></a></p>
     <div id="view-en" class="collapse">
       <div class="well">

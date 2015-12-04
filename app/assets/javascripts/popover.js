@@ -6,27 +6,19 @@ $(".main.analyze").ready(function() {
 
   $('a.jp').click(function(e) {
     e.preventDefault();
+    var word = $(this).text().trim();
+    console.log($(this).text());
+    $('#vocabToAdd').append(word + '&nbsp;&nbsp;&nbsp;');
+    var old = $('#vocabForm').val();
+    $('#vocabForm').val(old + word + '\n');
+  });
+
+  $('#clearVocab').click(function() {
+    $('#vocabToAdd').text(' ');
+    $('#vocabForm').val(' ');
   });
 
   $('[data-toggle="popover"]').popover();
 
-  $('.add-vocab').click(function(e) {
-    var word = $(this).attr('data-word');
-    console.log('testing');
 
-    $.ajax({
-        type: 'post',
-        url: '/vocab/add',
-        data: {
-          word: word
-        },
-        contentType: 'application/json',
-        success: function(res) {
-          console.log('success')
-        },
-        error: function() {
-          return console.log('error l2');
-        }
-      });
-  });
 });
