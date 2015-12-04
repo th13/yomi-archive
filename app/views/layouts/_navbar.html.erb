@@ -5,7 +5,9 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/vocab" class="hover-jp"><span data-en="My Vocab" data-jp="私の単語"></span></a></li>
+        <% if logged_in? %>
+          <li><a href="/vocab" class="hover-jp"><span data-en="My Vocab" data-jp="私の単語"></span></a></li>
+        <% end %>
         <li><a href="/read" class="hover-jp"><span data-en="Read!" data-jp="読む！"></span></a></li>
         <li><a href="/analyze" class="hover-jp"><span data-en="Analyze" data-jp="解析"></span></a></li>
       </ul>

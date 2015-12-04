@@ -27,13 +27,26 @@
   </div>
 </div>
 
+  <div class="col-md-6">
+    <h1 class="hover-jp">
+      <span data-en='My Vocabulary' data-jp='私の単語'></span>
+      <a data-toggle="modal" data-target="#addVocab" href="#addVocab" style="font-size: 1.5em; font-weight: 300; text-decoration: none; vertical-align: -10%;">+</a>
+    </h1>
+  </div>
 
-<div class="page-header">
-  <h1 class="hover-jp">
-    <span data-en='My Vocabulary' data-jp='私の単語'></span>
-    <a data-toggle="modal" data-target="#addVocab" href="#addVocab" style="font-size: 1.5em; font-weight: 300; text-decoration: none; vertical-align: -10%;">+</a>
-  </h1>
-</div>
+  <div class="col-md-4 col-md-offset-8">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control">
+        <span class="input-group-btn">
+          <button class="btn btn-default hover-jp" type="button">
+            <span data-en="Search" data-jp="検索"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+
 
 <% if @words %>
   <div class="row">
@@ -42,7 +55,9 @@
         <div class="panel panel-default">
           <div class="panel-body text-center">
             <h3 class="jp hover-en">
-              <span data-jp='<%= word[0][:jp] %>' data-en='<%= word[0][:def] %>'></span>
+              <a href="/analyze?search=<%= word[0][:jp] %>" style="color: #2c3e50; text-decoration: none;">
+                <span data-jp='<%= word[0][:jp] %>' data-en='<%= word[0][:def] %>'></span>
+              </a>
             </h3>
             <p class="jp"><%= word[0][:reading] %></p>
             <p><%= word[0][:pos] %></p>

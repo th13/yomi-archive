@@ -1,5 +1,8 @@
 'use strict';
 
-$(function () {
-	
+
+$(".main.vocab").ready(function() {
+  $('.card').click(function() {
+    
+  });
 });
