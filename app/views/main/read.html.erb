@@ -23,7 +23,17 @@
     <div id="analyzer-functions" class="hover-jp">
       <span data-en="Search based on: " data-jp="検索の単語："></span>
 
-      <span class="jp"><%= @seed %></span></div>
+      <span class="jp"><%= @seed %></span>
+
+      <div class="pull-right">
+        <form method="post" action="user/update">
+          <input type="text" name="maxUnknown" value="<%= current_user.max_unknown %>" />
+          <input class="form-control" type="hidden" name="id" value="<%= current_user.id %>" />
+            <button type="submit" class="btn btn-primary hover-jp" style='marging-bottom: 0.1em;'><span data-en="Change" data-jp="変更"></span></button>
+          </span>
+        </form>
+      </div>
+    </div>
   </div>
   <div class="panel-body">
     <% @out.each do |word| %>

@@ -5,21 +5,27 @@ class VocabController < ApplicationController
       words = params[:words].split() || [param[:word]]
       newWords = Ve.in(:ja).words(words.join(''))
       newWords.each do |word|
-        @vocab = Vocab.new(user_id: current_user.id, word: word.lemma)
-        if @vocab.save
-          working = true
+        if !Vocab.find_by(word: word.lemma)
+          @vocab = Vocab.new(user_id: current_user.id, word: word.lemma)
+          if @vocab.save
+            working = true
+          else
+            @error = 'Could not add word'
+            working = false
+            return
+          end
         else
-          @error = 'Could not add word'
-          working = false
+          puts 'DO FUCKING NOTHING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+          redirect_to '/vocab'
           return
         end
       end
 
       if working
         redirect_to '/vocab'
+      else
+        @error = 'You aren\'t logged in how are you here?'
       end
-    else
-      @error = 'You aren\'t logged in how are you here?'
     end
   end
 end

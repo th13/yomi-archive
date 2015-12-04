@@ -50,7 +50,7 @@ class MainController < ApplicationController
       seed = vocablist.sample
     end
 
-    sentence = Sentence.search(seed, vocablist, params[:limit] || 5)
+    sentence = Sentence.search(seed, vocablist, current_user.max_unknown || 5)
     while sentence == nil
       puts "WTF IS HAPPENING"
       sentence = Sentence.search(vocablist.sample, vocablist, params[:limit] || 5)

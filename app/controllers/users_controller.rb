@@ -4,6 +4,19 @@ class UsersController < ApplicationController
     @user = User.find(current_user)
   end
 
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_attribute(:max_unknown, params[:maxUnknown])
+
+      redirect_to '/read'
+    else
+      @error = "Something happened"
+      #redirect_to '/read'
+      puts 'FUCK'
+    end
+  end
+
   def new
     @user = User.new(user_params)
     if @user.save
