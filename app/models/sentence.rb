@@ -14,7 +14,7 @@ class Sentence < ActiveRecord::Base
     sentences = seed.sentences.where(user_id: 1 || 2).order("RANDOM()")
     # calculate amount of new words  -- change 2 to current user
     sentences.each do |sentence|
-      new_words =  sentence.words.count - sentence.words.joins(:users).where("user_id = 2").count
+      new_words = sentence.words.count - sentence.words.joins(:users).where("user_id = 2").count
       if (new_words <= new_words_allowed)
         return sentence
       end

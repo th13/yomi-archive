@@ -1,18 +1,16 @@
 class MainController < ApplicationController
+  # home page
   def home
 
   end
 
-  # search bar
-  def search
-
-  end
-
+  # vocab page
   def vocab
     # vocab list
     @words = User.first.words
   end
 
+  # read page
   def read
     # if no seed, then random
 
@@ -23,6 +21,12 @@ class MainController < ApplicationController
     puts jpn_sentence[:jpn] unless jpn_sentence.nil?
   end
 
+  # analyze page
   def analyze
+  end
+
+  # search bar post route  # search bar
+  def search
+
   end
 end
