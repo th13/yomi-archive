@@ -11,10 +11,25 @@ class MainController < ApplicationController
       @test = []
       @words = Vocab.where(user_id: current_user.id)
       @words.each do |word|
-        @test.push(parse_sentence(word.word))
+        if !word[:def]
+          jp = Ve.in('ja').words(word[:word])[0]
+          if jp.part_of_speech != Ve::PartOfSpeech::Symbol
+            search = URI(URI.encode('http://jisho.org/api/v1/search/words?keyword=' + jp.lemma))
+            res = JSON.parse(Net::HTTP.get(search))
+            defin = res['data'][0]['senses'][0]['english_definitions'][0]
+            @test.push({ jp: jp.word, def: defin, pos: jp.part_of_speech.name, reading: jp.extra[:reading] })
+            word.def = defin
+            word.save
+          else
+            @test.push({ jp: jp.word, def: '', pos: jp.part_of_speech.name, reading: '' })
+          end
+        else
+          jp = Ve.in('ja').words(word[:word])[0]
+          @test.push({ jp: jp.word, def: word[:def], pos: jp.part_of_speech.name, reading: jp.extra[:reading] })
+        end
       end
-      puts @test
       @words = @test
+      puts @words
     else
       @words = [{ jp: '結婚', reading: 'けっこん', en: 'marriage', pos: 'noun (する-verb)' }]
     end
