@@ -3,12 +3,15 @@
 </div>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div id="analyzer-functions">Actions here</div>
+    <div id="analyzer-functions" class="hover-jp">
+      <span data-en="Search based on: " data-jp="検索の単語："></span>
+
+      <span class="jp"><%= @seed %></span></div>
   </div>
   <div class="panel-body">
     <% @out.each do |word| %>
       <% if word[:pos] != 'symbol' && word[:pos] != 'number' %>
-        <a class="jp <%= word[:pos] %>" tabindex="0" href="" data-trigger="focus" data-container="body" data-toggle="popover" data-placement="top" data-content="<%= word[:def] %>" >
+        <a class="jp <%= word[:pos] %>" tabindex="0" href="" data-trigger="focus" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-content="<%= word[:def] %><br /><p class='jp'><%= word[:reading] %></p>" >
           <%= word[:jp] %>
         </a>
       <% else %>

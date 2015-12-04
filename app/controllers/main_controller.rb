@@ -35,16 +35,6 @@ class MainController < ApplicationController
     end
   end
 
-  # read page
-  def read
-    # if no seed, then random
-
-    # random search - first get list of random seeds
-    seeds = User.last.words.order("RANDOM()")
-    jpn_sentence = Sentence.search(seeds[0], 3)
-
-    puts jpn_sentence[:jpn] unless jpn_sentence.nil?
-  end
 
   # analyze page
   def read
@@ -65,6 +55,7 @@ class MainController < ApplicationController
       puts "WTF IS HAPPENING"
       sentence = Sentence.search(vocablist.sample, vocablist, params[:limit] || 5)
     end
+    @seed = seed
     @out = parse_sentence(sentence[:jpn])
     @eng = sentence[:eng]
   end

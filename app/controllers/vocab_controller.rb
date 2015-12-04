@@ -2,7 +2,7 @@ class VocabController < ApplicationController
   def add
     if logged_in?
       working = false
-      words = params[:words].split()
+      words = params[:words].split() || [param[:word]]
       words.each do |word|
         @vocab = Vocab.new(user_id: current_user.id, word: word)
         if @vocab.save

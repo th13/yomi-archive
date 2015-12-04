@@ -7,9 +7,8 @@
       <ul class="nav navbar-nav">
         <% if logged_in? %>
           <li><a href="/vocab" class="hover-jp"><span data-en="My Vocab" data-jp="私の単語"></span></a></li>
+          <li><a href="/read" class="hover-jp"><span data-en="Read!" data-jp="読む！"></span></a></li>
         <% end %>
-        <li><a href="/read" class="hover-jp"><span data-en="Read!" data-jp="読む！"></span></a></li>
-        <li><a href="/analyze" class="hover-jp"><span data-en="Analyze" data-jp="解析"></span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
