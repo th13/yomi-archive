@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'vocab'   => 'main#vocab'
   get 'read'    => 'main#read'
   get 'analyze' => 'main#analyze'
+  post 'search' => 'main#search'
 
   resources :users
   resources :sentences,   only: [:create, :destroy]
