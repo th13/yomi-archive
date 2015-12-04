@@ -5,9 +5,19 @@ class MainController < ApplicationController
 
   # vocab page
   def vocab
-    @vocab = [{ jp: '結婚', reading: 'けっこん', en: 'marriage', pos: 'noun (する-verb)' }]
+    #@vocab = [{ jp: '結婚', reading: 'けっこん', en: 'marriage', pos: 'noun (する-verb)' }]
     # vocab list
-    #@words = User.first.words
+    if current_user
+      @test = []
+      @words = Vocab.where(user_id: current_user.id)
+      @words.each do |word|
+        @test.push(parse_sentence(word.word))
+      end
+      puts @test
+      @words = @test
+    else
+      @words = [{ jp: '結婚', reading: 'けっこん', en: 'marriage', pos: 'noun (する-verb)' }]
+    end
   end
 
   # read page
@@ -44,9 +54,9 @@ class MainController < ApplicationController
           search = URI(URI.encode('http://jisho.org/api/v1/search/words?keyword=' + word.lemma))
           res = JSON.parse(Net::HTTP.get(search))
           defin = res['data'][0]['senses'][0]['english_definitions'][0]
-          out.push({ jp: word.word, def: defin, pos: word.part_of_speech.name })
+          out.push({ jp: word.word, def: defin, pos: word.part_of_speech.name, reading: word.extra[:reading] })
         else
-          out.push({ jp: word.word, def: '', pos: word.part_of_speech.name })
+          out.push({ jp: word.word, def: '', pos: word.part_of_speech.name, reading: '' })
         end
       end
 

@@ -4,17 +4,17 @@
   </h1>
 </div>
 
-<% if @vocab %>
+<% if @words %>
   <div class="row">
-    <% @vocab.each do |word| %>
+    <% @words.each do |word| %>
       <div class="col-lg-3">
         <div class="panel panel-default">
           <div class="panel-body text-center">
             <h3 class="jp hover-en">
-              <span data-jp='<%= word[:jp] %>' data-en='<%= word[:en] %>'></span>
+              <span data-jp='<%= word[0][:jp] %>' data-en='<%= word[0][:def] %>'></span>
             </h3>
-            <p class="jp"><%= word[:reading] %></p>
-            <p><%= word[:pos] %></p>
+            <p class="jp"><%= word[0][:reading] %></p>
+            <p><%= word[0][:pos] %></p>
           </div>
         </div>
       </div>
