@@ -29,17 +29,10 @@ def Parser.parse_sentence(jpn_sentence)
 
  # save words to Word database if not in there already, then make association
  jpn_words.each do |word|
-   word_obj = Word.find_by(jpn: word)
-   if (word_obj.nil?)
-     # get jisho search
-     search = URI(URI.encode('http://jisho.org/api/v1/search/words?keyword=' + word))
-     result = JSON.parse(Net::HTTP.get(search))
-     word_obj = Word.create!(jpn: word,
-  	  reading: result['data'][0]['japanese'][0]['reading'],
-  	  eng: result['data'][0]['senses'][0]['english_definitions'][0],
-      pos: result['data'][0]['senses'][0]['parts_of_speech'][0])
-   end 
-   Keyword.create!(sentence_id: jpn_sentence[:id], word_id: word_obj[:id])
+  # get jisho search
+  # search = URI(URI.encode('http://jisho.org/api/v1/search/words?keyword=' + word))
+  # result = JSON.parse(Net::HTTP.get(search))
+  Keyword.create!(sentence_id: jpn_sentence[:id], word: word)
  end
 
  return jpn_words

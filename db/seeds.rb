@@ -9,16 +9,10 @@
 #require_relative '../lib/parser.rb'
 
 EXAMPLE_SENTENCES = 149865
-SKIP_FACTOR = 10000
+SKIP_FACTOR = 10
 
 count = 0
 sentences = 0
-
-user = User.create!(name: "admin",
-                    email: "test@example.com")
-
-#test User
-user2 = User.create!(name: "test", email: "testemail")
 
 # read in examples.utf tanaka corpus file and store in db
 file = "examples.utf"
@@ -33,7 +27,7 @@ while !examples.eof?
       jpn = line[3..line.index("\t")-1]
       eng = line[(line.index("\t")+1)..line.index("#ID")-1]
       # create new sentence
-      sentence = Sentence.create!(jpn: jpn, eng: eng, user: user)
+      sentence = Sentence.create!(jpn: jpn, eng: eng)
       # parses sentence with ve
       Parser.parse_sentence(sentence)
       sentences = sentences + 1

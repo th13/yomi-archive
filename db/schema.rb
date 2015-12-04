@@ -11,17 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204080818) do
+ActiveRecord::Schema.define(version: 20151204085544) do
 
   create_table "keywords", force: :cascade do |t|
     t.integer  "sentence_id"
-    t.integer  "word_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "word"
   end
 
   add_index "keywords", ["sentence_id"], name: "index_keywords_on_sentence_id"
-  add_index "keywords", ["word_id"], name: "index_keywords_on_word_id"
 
   create_table "sentences", force: :cascade do |t|
     t.text     "jpn"

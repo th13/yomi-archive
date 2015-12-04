@@ -47,11 +47,22 @@ class MainController < ApplicationController
   end
 
   # analyze page
-  def analyze
+  def read
     if params[:search]
       @out = parse_sentence(params[:search])
     else
-      @out = parse_sentence('これは何かです。')
+      vocablist = []
+      current_user.vocabs.each do |vocab|
+        vocablist.push(vocab[:word])
+      end
+      puts vocablist.sample
+      sentence = Sentence.search(vocablist.sample, vocablist, 5)
+      while sentence == nil
+        puts "WTF IS HAPPENING"
+        sentence = Sentence.search(vocablist.sample, vocablist, 5)
+      end
+      @out = parse_sentence(sentence[:jpn])
+      @eng = sentence[:eng]
     end
   end
 

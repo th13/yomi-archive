@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   get 'vocab'     => 'main#vocab'
   get 'read'      => 'main#read'
-  get 'analyze'   => 'main#analyze'
-  get 'analyze/:id' => 'main#analyze_search'
   post 'search' => 'main#search'
 
   get 'new'             => 'users#new'
