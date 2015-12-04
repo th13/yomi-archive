@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'vocab'     => 'main#vocab'
   get 'read'      => 'main#read'
   get 'analyze'   => 'main#analyze'
+  get 'analyze/:id' => 'main#analyze_search'
   post 'search' => 'main#search'
 
   get 'new'             => 'users#new'
@@ -14,7 +15,8 @@ Rails.application.routes.draw do
   post   'login'         => 'sessions#create'
   delete 'logout'        => 'sessions#destroy'
 
-  resources :users
+  post 'users/new'    => 'users#new'
+  #resources :users
   resources :sentences,   only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
