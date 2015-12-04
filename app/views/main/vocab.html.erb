@@ -1,6 +1,37 @@
+<div id="addVocab" tabindex="-1" role="dialog" aria-labelledby="addVocabLabel" class="modal fade">
+  <div role="document" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+        <h3 id="addVocabLabel" class="modal-title hover-jp"><span data-en="New Vocab" data-jp="新しい単語"></span></h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" method="post" action="/vocab/add">
+          <fieldset>
+            <div class="form-group">
+              <label for="word" class="col-md-3 control-label hover-jp"><span data-en="Word" data-jp="単語"></span></label>
+              <div class="col-md-8">
+                <textarea id="inputWords" placeholder="Word" type="text" class="form-control" name='words'></textarea>
+              </div>
+            </div>
+          </fieldset>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <button type="button" data-dismiss="modal" class="btn btn-default hover-jp"><span data-en="Close" data-jp="キャンセル"></span></button>
+          <button type="submit" class="btn btn-primary hover-jp"> <span data-en="Add" data-jp="足す"></span></button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="page-header">
   <h1 class="hover-jp">
     <span data-en='My Vocabulary' data-jp='私の単語'></span>
+    <a data-toggle="modal" data-target="#addVocab" href="#addVocab" style="font-size: 1.5em; font-weight: 300; text-decoration: none; vertical-align: -10%;">+</a>
   </h1>
 </div>
 

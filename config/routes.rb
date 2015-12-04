@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   post 'users/new'    => 'users#new'
   post 'users/login'  => 'users#login'
   get 'logout'        => 'users#logout'
-  
+
+  post 'vocab/add'    => 'vocab#add'
+
   #resources :users
   resources :sentences,   only: [:create, :destroy]
 
