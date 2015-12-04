@@ -26,7 +26,9 @@
       <span class="jp"><%= @seed %></span>
 
       <div class="pull-right">
-        <form method="post" action="user/update">
+        <form method="post" action="user/update" class="form form-horizontal">
+          <label for="maxUnknown" class="hover-jp">
+            <span data-en="Max Unknown Words: " data-jp="知らない単語数"></span></label>
           <input type="text" name="maxUnknown" value="<%= current_user.max_unknown %>" />
           <input class="form-control" type="hidden" name="id" value="<%= current_user.id %>" />
             <button type="submit" class="btn btn-primary hover-jp" style='marging-bottom: 0.1em;'><span data-en="Change" data-jp="変更"></span></button>
@@ -37,7 +39,7 @@
   </div>
   <div class="panel-body">
     <% @out.each do |word| %>
-      <% if word[:pos] != 'symbol' && word[:pos] != 'number' %>
+      <% if word[:pos] != 'symbol' && word[:pos] != 'number' && !@vocablist.include?(word[:lemma]) %>
         <a class="jp <%= word[:pos] %>" tabindex="0" href="" data-trigger="focus" data-container="body" data-toggle="popover" data-placement="top" data-html="true" data-content="<%= word[:def] %><br /><p class='jp'><%= word[:reading] %></p>" >
           <%= word[:jp] %>
         </a>

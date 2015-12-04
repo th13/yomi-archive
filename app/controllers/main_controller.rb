@@ -57,6 +57,7 @@ class MainController < ApplicationController
     end
     @seed = seed
     @out = parse_sentence(sentence[:jpn])
+    @vocablist = vocablist
     @eng = sentence[:eng]
   end
 
@@ -74,9 +75,9 @@ class MainController < ApplicationController
           search = URI(URI.encode('http://jisho.org/api/v1/search/words?keyword=' + word.lemma))
           res = JSON.parse(Net::HTTP.get(search))
           defin = res['data'][0]['senses'][0]['english_definitions'][0]
-          out.push({ jp: word.word, def: defin, pos: word.part_of_speech.name, reading: word.extra[:reading] })
+          out.push({ jp: word.word, def: defin, pos: word.part_of_speech.name, reading: word.extra[:reading], lemma: word.lemma })
         else
-          out.push({ jp: word.word, def: '', pos: word.part_of_speech.name, reading: '' })
+          out.push({ jp: word.word, def: '', pos: word.part_of_speech.name, reading: '', lemma: '' })
         end
       end
 
