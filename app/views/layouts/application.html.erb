@@ -1,0 +1,56 @@
+<!--
+██╗   ██╗ ██████╗ ███╗   ███╗██╗██╗
+╚██╗ ██╔╝██╔═══██╗████╗ ████║██║██║
+ ╚████╔╝ ██║   ██║██╔████╔██║██║██║
+  ╚██╔╝  ██║   ██║██║╚██╔╝██║██║╚═╝
+   ██║   ╚██████╔╝██║ ╚═╝ ██║██║██╗
+   ╚═╝    ╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝
+
+██████╗ ██╗   ██╗    ████████╗██████╗ ███████╗██╗   ██╗
+██╔══██╗╚██╗ ██╔╝    ╚══██╔══╝██╔══██╗██╔════╝██║   ██║
+██████╔╝ ╚████╔╝        ██║   ██████╔╝█████╗  ██║   ██║
+██╔══██╗  ╚██╔╝         ██║   ██╔══██╗██╔══╝  ╚██╗ ██╔╝
+██████╔╝   ██║          ██║   ██║  ██║███████╗ ╚████╔╝▄█╗
+╚═════╝    ╚═╝          ╚═╝   ╚═╝  ╚═╝╚══════╝  ╚═══╝ ╚═╝
+
+███╗   ███╗██╗██╗  ██╗███████╗        █████╗ ███╗   ██╗██████╗
+████╗ ████║██║██║ ██╔╝██╔════╝       ██╔══██╗████╗  ██║██╔══██╗
+██╔████╔██║██║█████╔╝ █████╗         ███████║██╔██╗ ██║██║  ██║
+██║╚██╔╝██║██║██╔═██╗ ██╔══╝         ██╔══██║██║╚██╗██║██║  ██║
+██║ ╚═╝ ██║██║██║  ██╗███████╗▄█╗    ██║  ██║██║ ╚████║██████╔╝
+╚═╝     ╚═╝╚═╝╚═╝  ╚═╝╚══════╝╚═╝    ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝
+
+███████╗██╗     ██╗     ██╗ ██████╗ ████████╗
+██╔════╝██║     ██║     ██║██╔═══██╗╚══██╔══╝
+█████╗  ██║     ██║     ██║██║   ██║   ██║
+██╔══╝  ██║     ██║     ██║██║   ██║   ██║
+███████╗███████╗███████╗██║╚██████╔╝   ██║
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- So meta-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Japanese reading practice tool">
+    <meta name="author" content="Gold Team">
+    <title>Home</title>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag "global", media: "all" %>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800">
+  </head>
+  <body>
+    <%= render 'layouts/navbar' %>
+    <%= render 'sessions/login' %>
+    <%= render 'sessions/signup' %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

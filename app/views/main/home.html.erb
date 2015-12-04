@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <div class="page-header">
+        <%= image_tag 'yomi', id: 'center-logo', style: 'max-width: 250px;', class: 'img-responsive center-block' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <form for="search" action="/analyzer" method="get">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="form-group">
+          <div id="search" class="input-group">
+            <input type="text" name="search" placeholder="Enter a sentence or word to search" autofocus class="form-control"><span class="input-group-btn">
+              <button type="submit" class="btn btn-primary hover-jp"><span data-en="Search" data-jp="検索"></span></button></span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

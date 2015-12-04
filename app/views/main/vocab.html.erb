@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1 class="hover-jp">
+    <span data-en='My Vocabulary' data-jp='私の単語'></span>
+  </h1>
+</div>
+
+<% if @vocab %>
+  <div class="row">
+    <% @vocab.each do |word| %>
+      <div class="col-lg-3">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+            <h3 class="jp hover-en">
+              <span data-jp='<%= word[:jp] %>' data-en='<%= word[:en] %>'></span>
+            </h3>
+            <p class="jp"><%= word[:reading] %></p>
+            <p><%= word[:pos] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

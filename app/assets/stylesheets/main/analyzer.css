@@ -1,0 +1,64 @@
+@charset "UTF-8";
+#analyzer-functions {
+	font-size: 18px;
+}
+
+a.jp {
+	margin-left: 3px;
+	line-height: 2;
+	border-bottom: 1px solid;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 22px;
+}
+
+a.jp.noun, a.jp.proper-noun, a.jp.suffix, a.jp.pronoun, a.jp.conjunction {
+  color: black;
+  border-color: black;
+}
+
+a.jp.verb {
+  color: gray;
+  border-color: gray;
+}
+
+a.jp.postposition {
+  color: red;
+  border-color: red;
+}
+
+a.jp.adverb, a.jp.adjective {
+  color: green;
+  border-color: green;
+}
+
+a.jp.interjection {
+  color: orange;
+  border-color: orange;
+}
+
+a.jp.symbol {
+  border-bottom: 0px;
+}
+
+a.jp.determiner {
+  border-bottom: 0px;
+}
+
+a.jp:hover {
+  text-decoration: none;
+  border-width: 2px;
+}
+
+a.jp:focus {
+  text-decoration: none;
+  border-width: 2px;
+}
+
+a.jp:active {
+  border-width: 2px;
+}
+
+a.jp {
+  padding: 1px 2px;
+  line-height: 2;
+}
