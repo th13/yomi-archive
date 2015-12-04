@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   delete 'logout'        => 'sessions#destroy'
 
   post 'users/new'    => 'users#new'
+  post 'users/login'  => 'users#login'
+  get 'logout'        => 'users#logout'
+  
   #resources :users
   resources :sentences,   only: [:create, :destroy]
 

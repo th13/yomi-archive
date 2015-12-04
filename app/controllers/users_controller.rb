@@ -8,12 +8,26 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      puts 'its working'
       redirect_to '/'
     else
-      puts 'not working'
-      redirect_to '/'
+      redirect_to root_url
     end
+  end
+
+  def login
+    user = User.find_by(email: params[:email].downcase)
+    if user && user.authenticate(params[:password])
+      log_in user
+      redirect_to root_url
+    else
+      flash.now[:danger] = 'Invalid email/password combination'
+      redirect_to root_url
+    end
+  end
+
+  def logout
+    log_out
+    redirect_to '/'
   end
 
   private

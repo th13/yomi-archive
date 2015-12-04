@@ -1,7 +1,6 @@
 class MainController < ApplicationController
   # home page
   def home
-
   end
 
   # vocab page

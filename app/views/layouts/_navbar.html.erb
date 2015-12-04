@@ -11,7 +11,15 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><a href="#>"><%= current_user.email %></a></li>
+        <li class="dropdown">
+                <a href="/user/<%= current_user.id %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/logout" class="hover-jp">
+                    <span data-en="Logout" data-jp="ログアウト"></span>
+                  </a></li>
+                </ul>
+              </li>
+          <li><a href="#"></a></li>
         <% else %>
           <li><a data-toggle="modal" data-target="#login" href="#login" class="hover-jp"><span data-en="Login" data-jp="ログイン"></span></a></li>
           <li><a data-toggle="modal" data-target="#signup" href="#signup" class="hover-jp"><span data-en="Sign Up" data-jp="アカウント登録"></span></a></li>
