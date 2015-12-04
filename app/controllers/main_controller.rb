@@ -48,22 +48,25 @@ class MainController < ApplicationController
 
   # analyze page
   def read
-    if params[:search]
-      @out = parse_sentence(params[:search])
-    else
-      vocablist = []
-      current_user.vocabs.each do |vocab|
-        vocablist.push(vocab[:word])
-      end
-      puts vocablist.sample
-      sentence = Sentence.search(vocablist.sample, vocablist, 5)
-      while sentence == nil
-        puts "WTF IS HAPPENING"
-        sentence = Sentence.search(vocablist.sample, vocablist, 5)
-      end
-      @out = parse_sentence(sentence[:jpn])
-      @eng = sentence[:eng]
+    vocablist = []
+    current_user.vocabs.each do |vocab|
+      vocablist.push(vocab[:word])
     end
+
+    seed = ''
+    if params[:search]
+      seed = params[:search]
+    else
+      seed = vocablist.sample
+    end
+
+    sentence = Sentence.search(seed, vocablist, params[:limit] || 5)
+    while sentence == nil
+      puts "WTF IS HAPPENING"
+      sentence = Sentence.search(vocablist.sample, vocablist, params[:limit] || 5)
+    end
+    @out = parse_sentence(sentence[:jpn])
+    @eng = sentence[:eng]
   end
 
   def new
