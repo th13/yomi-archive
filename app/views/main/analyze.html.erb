@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1 class="hover-jp"><span data-en="Text Analyzer" data-jp="テキスト解析"></span></h1>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div id="analyzer-functions">Actions here</div>
+  </div>
+  <div class="panel-body">
+    <% @out.each do |word| %>
+      <% if word[:pos] != 'symbol' && word[:pos] != 'number' %>
+        <a class="jp <%= word[:pos] %>" tabindex="0" href="" data-trigger="focus" data-container="body" data-toggle="popover" data-placement="top" data-content="<%= word[:def] %>" >
+          <%= word[:jp] %>
+        </a>
+      <% else %>
+        <span class="jp"><%= word[:jp] %></span>
+      <% end %>
+    <% end %>
+    <br/><br/>
+    <p class="text-muted text-center"><a data-toggle="collapse" aria-expanded="false" aria-controls="view-en" href="#view-en" class="hover-jp"><span data-en="View English" data-jp="英語の翻訳を見る"></span><span class="caret"></span></a></p>
+    <div id="view-en" class="collapse">
+      <div class="well"></div>
+    </div>
+  </div>
+</div>

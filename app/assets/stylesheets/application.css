@@ -12,8 +12,5 @@
  * files in this directory. It is generally better to create a new file per
  * style scope.
  *
- *= require flatly
- *= require global
- *= require navbar-fixed
- *= require square-corners
+ *= require_tree .
  */
