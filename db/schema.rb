@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203033336) do
+ActiveRecord::Schema.define(version: 20151203174043) do
 
   create_table "keywords", force: :cascade do |t|
     t.integer  "sentence_id"
@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 20151203033336) do
     t.string   "jpn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "reading"
+    t.string   "eng"
+    t.string   "pos"
   end
 
   add_index "words", ["jpn"], name: "index_words_on_jpn", unique: true

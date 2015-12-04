@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'vocab'     => 'main#vocab'
   get 'read'      => 'main#read'
   get 'analyze'   => 'main#analyze'
+  post 'search' => 'main#search'
 
   get 'new'             => 'users#new'
   get 'users/:id'      => 'users#show'

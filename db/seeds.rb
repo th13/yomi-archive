@@ -17,6 +17,9 @@ sentences = 0
 user = User.create!(name: "admin",
                     email: "test@example.com")
 
+#test User
+user2 = User.create!(name: "test", email: "testemail")
+
 # read in examples.utf tanaka corpus file and store in db
 file = "examples.utf"
 examples = File.open(file, "r")
@@ -24,16 +27,15 @@ while !examples.eof?
   line = examples.readline
   # if line contains info we wnt to parse
   if line.match("A: ")
+    #used to skip items in examples
     if (count % SKIP_FACTOR == 0)
+      # parse japanese and english
       jpn = line[3..line.index("\t")-1]
       eng = line[(line.index("\t")+1)..line.index("#ID")-1]
-      #puts jpn + "\n" + eng + "\n"
-      Sentence.create!(jpn: jpn, eng: eng, user: user)
-      # puts jpn + "\n" + eng + "\n" and assigns sentence to variable
+      # create new sentence
       sentence = Sentence.create!(jpn: jpn, eng: eng, user: user)
       # parses sentence with ve
       Parser.parse_sentence(sentence)
-
       sentences = sentences + 1
       if (count % 1000 == 0)
         puts "#{count*100 / EXAMPLE_SENTENCES}% of examples loaded"
