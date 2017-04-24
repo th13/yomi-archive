@@ -9,7 +9,7 @@
 #require_relative '../lib/parser.rb'
 
 EXAMPLE_SENTENCES = 149865
-SKIP_FACTOR = 1
+SKIP_FACTOR = 100
 
 count = 0
 sentences = 0

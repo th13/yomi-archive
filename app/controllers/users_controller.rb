@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     else
       @error = "Something happened"
       #redirect_to '/read'
-      puts 'FUCK'
     end
   end
 

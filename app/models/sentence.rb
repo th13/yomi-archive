@@ -24,7 +24,7 @@ class Sentence < ActiveRecord::Base
       if c <= new_words_allowed
         puts c
       else
-        puts 'REJECTED BITCH'
+        puts 'Sentence not a match'
       end
       if c > new_words_allowed
         sentences = sentences - [sentence]

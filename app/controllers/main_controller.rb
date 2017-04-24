@@ -16,7 +16,7 @@ class MainController < ApplicationController
           if jp.part_of_speech != Ve::PartOfSpeech::Symbol
             search = URI(URI.encode('http://jisho.org/api/v1/search/words?keyword=' + jp.lemma))
             res = JSON.parse(Net::HTTP.get(search))
-            defin = res['data'][0]['senses'][0]['english_definitions'][0]
+            defin = res['data'][0]['senses'][0]['english_definitions'][0] or "no definition found :("
             @test.push({ jp: jp.word, def: defin, pos: jp.part_of_speech.name, reading: jp.extra[:reading] })
             word.def = defin
             word.save
@@ -50,15 +50,23 @@ class MainController < ApplicationController
       seed = vocablist.sample
     end
 
+    c = 0
     sentence = Sentence.search(seed, vocablist, current_user.max_unknown || 5)
-    while sentence == nil
-      puts "WTF IS HAPPENING"
+    while sentence == nil and c < 100000
       sentence = Sentence.search(vocablist.sample, vocablist, params[:limit] || 5)
+    c = c + 1
     end
-    @seed = seed
-    @out = parse_sentence(sentence[:jpn])
-    @vocablist = vocablist
-    @eng = sentence[:eng]
+    if sentence == nil
+      @seed = "broken"
+      @out = "broken"
+      @vocablist = vocablist
+      @eng = "broken"
+    else
+      @seed = seed
+      @out = parse_sentence(sentence[:jpn])
+      @vocablist = vocablist
+      @eng = sentence[:eng]
+    end
   end
 
   def new
@@ -74,7 +82,7 @@ class MainController < ApplicationController
         if word.part_of_speech != Ve::PartOfSpeech::Symbol
           search = URI(URI.encode('http://jisho.org/api/v1/search/words?keyword=' + word.lemma))
           res = JSON.parse(Net::HTTP.get(search))
-          defin = res['data'][0]['senses'][0]['english_definitions'][0]
+          defin = res['data'][0]['senses'][0]['english_definitions'][0] or "no definition found"
           out.push({ jp: word.word, def: defin, pos: word.part_of_speech.name, reading: word.extra[:reading], lemma: word.lemma })
         else
           out.push({ jp: word.word, def: '', pos: word.part_of_speech.name, reading: '', lemma: '' })
